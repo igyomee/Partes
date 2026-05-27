@@ -1,0 +1,535 @@
+:root {
+  --yellow: #f6c400;
+  --yellow-strong: #ffd426;
+  --yellow-soft: #fff4bd;
+  --ink: #111111;
+  --ink-soft: #333333;
+  --muted: #686868;
+  --line: #d8d8d8;
+  --paper: #ffffff;
+  --page: #f4f4f1;
+  --success: #176b37;
+  --danger: #a82020;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  overflow-x: hidden;
+  background:
+    linear-gradient(135deg, rgba(246, 196, 0, 0.16), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, var(--page) 100%);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  max-width: 100%;
+}
+
+.app-shell {
+  width: min(1440px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 22px 0 36px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--yellow);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.brand-logo {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: #2f2f2f;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: #2d2600;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(1.55rem, 3vw, 2.45rem);
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 1.12rem;
+}
+
+.topbar-actions,
+.form-actions,
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-heading {
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.panel {
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.form-panel {
+  padding: 22px;
+}
+
+.list-panel {
+  align-self: start;
+  padding: 18px;
+  position: sticky;
+  top: 16px;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+}
+
+.grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid.four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+label,
+.field-group {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+label > span,
+.field-group > span,
+.field-label-row > span {
+  color: #202020;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.field-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.technicians-list {
+  display: grid;
+  gap: 10px;
+}
+
+.technician-row {
+  display: grid;
+  grid-template-columns: 86px minmax(260px, 1fr) 32px;
+  grid-template-areas:
+    "code name remove"
+    "dni dni remove";
+  gap: 8px;
+  align-items: stretch;
+  padding: 8px;
+  border: 1.5px solid #d8d8d8;
+  border-radius: 8px;
+  background: #fffdf4;
+}
+
+.technician-row label {
+  gap: 0;
+}
+
+.technician-code-field {
+  grid-area: code;
+}
+
+.technician-name-field {
+  grid-area: name;
+}
+
+.technician-dni-field {
+  grid-area: dni;
+}
+
+.technician-row .technician-name,
+.technician-row .technician-dni {
+  text-overflow: ellipsis;
+}
+
+.technician-row .remove-technician {
+  grid-area: remove;
+  align-self: start;
+  justify-self: end;
+  width: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 0;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.radio-group {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.radio-row,
+.check-row {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  background: #ffffff;
+  font-weight: 700;
+}
+
+.radio-row input,
+.check-row input {
+  width: 18px;
+  min-height: 18px;
+  accent-color: var(--yellow);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  padding: 9px 10px;
+  background: #ffffff;
+  color: var(--ink);
+}
+
+input[type="date"],
+input[type="time"] {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 116px;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus-visible {
+  outline: 3px solid var(--yellow-strong);
+  outline-offset: 2px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  align-items: end;
+  padding: 14px;
+  border: 1.5px solid #cfcfcf;
+  border-radius: 8px;
+  background: var(--yellow-soft);
+}
+
+.hours-check {
+  min-height: 42px;
+  padding: 11px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  background: #f8f8f8;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.hours-check.ok {
+  border-color: rgba(23, 107, 55, 0.55);
+  background: #eaf7ef;
+  color: var(--success);
+}
+
+.hours-check.error {
+  border-color: rgba(168, 32, 32, 0.55);
+  background: #fff0f0;
+  color: var(--danger);
+}
+
+.button {
+  min-height: 42px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 9px 14px;
+  color: var(--ink);
+  background: #ffffff;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.button:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}
+
+.button.primary {
+  background: var(--yellow);
+}
+
+.button.secondary {
+  background: #ffffff;
+}
+
+.button.text-button {
+  min-height: 32px;
+  border-width: 1.5px;
+  padding: 5px 9px;
+  box-shadow: none;
+  font-size: 0.84rem;
+}
+
+.state-pill,
+.count {
+  display: inline-flex;
+  min-width: 34px;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: var(--yellow-soft);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.search-label {
+  margin-bottom: 14px;
+}
+
+.parts-list {
+  display: grid;
+  gap: 10px;
+}
+
+.empty-state {
+  padding: 16px;
+  border: 1.5px dashed #c8c8c8;
+  border-radius: 8px;
+  color: var(--muted);
+  background: #fafafa;
+  line-height: 1.45;
+}
+
+.empty-state strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+.print-area {
+  display: none;
+}
+
+@media (max-width: 1040px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .list-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    width: min(100% - 28px, 1440px);
+    padding: 12px 0 28px;
+  }
+
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 14px;
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  .panel {
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  .form-panel,
+  .list-panel {
+    padding: 16px 14px;
+  }
+
+  .brand-logo {
+    width: 68px;
+    height: 68px;
+  }
+
+  .topbar-actions,
+  .form-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .grid.two,
+  .grid.four,
+  .radio-group,
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  input,
+  textarea,
+  select {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 48px;
+    padding-inline: 12px;
+    font-size: 16px;
+  }
+
+  input[type="date"],
+  input[type="time"] {
+    inline-size: 100%;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    padding-right: 12px;
+  }
+
+  .field-label-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .field-label-row .button {
+    width: 100%;
+  }
+
+  .technician-row {
+    grid-template-columns: minmax(78px, 96px) minmax(0, 1fr) 30px;
+    grid-template-areas:
+      "code . remove"
+      "name name name"
+      "dni dni dni";
+    gap: 9px;
+    padding: 10px;
+  }
+
+  .technician-row label {
+    grid-column: auto;
+  }
+
+  .technician-row .technician-code-field {
+    grid-area: code;
+  }
+
+  .technician-row .technician-name-field {
+    grid-area: name;
+  }
+
+  .technician-row .technician-dni-field {
+    grid-area: dni;
+  }
+
+  .technician-row .remove-technician {
+    grid-area: remove;
+    align-self: center;
+  }
+}
